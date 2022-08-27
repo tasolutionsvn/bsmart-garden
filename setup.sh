@@ -24,7 +24,7 @@ if [ $countFiles -ge 1 ]; then
 fi
 
 # Continue if not download yet
-if [ ${#GITHUB_TOKEN} -eq 0 -eq 0 ]; then
+if [ ${#GITHUB_TOKEN} -eq 0 ]; then
     read -p "Enter a Github key: " GITHUB_TOKEN
     export GITHUB_TOKEN=$GITHUB_TOKEN
 fi
