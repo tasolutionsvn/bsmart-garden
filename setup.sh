@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# RUN
+# . setup.sh
+
 GITHUB_TOKEN="${GITHUB_TOKEN:-}"
 branch="master"
 github_api="https://api.github.com/repos/tasolutionsvn/activation/contents"
@@ -28,3 +31,8 @@ fi
 
 curl -sL -H "Accept: application/vnd.github.v4.raw" -H "Authorization: token $GITHUB_TOKEN" -o "$workingDir/persistent.sh" "$github_api/persistent.sh?ref=$branch"
 
+if [ -f $workingDir/persistent.sh ]; then 
+    . $workingDir/persistent.sh $workingDir
+else 
+    echo 'Cannot download the file'
+fi
