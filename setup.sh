@@ -13,6 +13,16 @@ if [ "$1" ]; then
     mkdir -p $workingDir;
 fi
 
+# System update
+curl_bin=$(which curl)
+if [ "$curl_bin" = '' ]; then
+    echo 'Install curl'
+    apt-get -qqy update
+    apt-get -qqy install curl 1>/dev/null
+fi
+
+# Download file setup
+
 if [ -z $GITHUB_TOKEN ]; then
     read -p "Enter a Github key: " GITHUB_TOKEN
 fi
