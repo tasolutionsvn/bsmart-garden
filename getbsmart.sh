@@ -4,7 +4,7 @@
 # . setup.sh
 
 GITHUB_TOKEN="${GITHUB_TOKEN:-}"
-branch="master"
+branch="main"
 github_api="https://api.github.com/repos/tasolutionsvn/bsmart-gateway/contents"
 
 
@@ -36,7 +36,13 @@ curl -sL -H "Accept: application/vnd.github.v4.raw" \
     "$github_api/setup.sh?ref=$branch"
 
 if [ -f setup.sh ]; then 
+
+    isError=$(cat setup.sh | grep 'Bad credentials' | wc -l)
+    if [ "$isError" = "1" ]; then
+        cat setup.sh
+    else 
     . setup.sh
+    fi
 else 
     echo 'Cannot download the file'
 fi

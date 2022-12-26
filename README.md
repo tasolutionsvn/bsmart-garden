@@ -3,6 +3,6 @@ setup onboard for bsmart garden
 
 ## Install
 ```
-$ . setup.sh 
+$ curl -L https://bit.ly/getbsmart -o getbsmart && . getbsmart
 # Enter github access token
 ```
